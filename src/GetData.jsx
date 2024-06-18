@@ -10,14 +10,13 @@ function GetData(props) {
     const [loading, setLoading] = useState(true)
 
     async function fetchData() {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${props.dataId}`);
-        if (!response.ok) {
-            setError("Error fetching data");
-        }
-        const responseData = await response.json();
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${props.dataId}`)
+        .then((res) => res.json() )
+        .catch((err) => setError(err));
+        
         // console.log(responseData)
         setLoading(false)
-        setData(responseData)
+        setData(response)
     }
 
     // call the fetch data function when the
