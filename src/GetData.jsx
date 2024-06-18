@@ -4,13 +4,12 @@ import InputID from "./InputID.jsx";
 function GetData(props) {
     // using state management, manage
     // console.log(props.dataId)
+    // error, loading and success states
     const [data, setData] = useState({})
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
-    // error, loading and success states
 
     async function fetchData() {
-        // complete the code here
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${props.dataId}`);
         if (!response.ok) {
             setError("Error fetching data");
@@ -22,10 +21,10 @@ function GetData(props) {
     }
 
     // call the fetch data function when the
+    // page loads
     useEffect( () => {
             fetchData();
     },[props.dataId])
-    // page loads
 
 
     if(error) {
@@ -35,10 +34,9 @@ function GetData(props) {
     if(loading) {
         return <h2>Loading data...</h2>
     }
-    // Here is the basic data boilerplate
+
     return (
         <>
-            {/* do not edit the code below this line */}
             <h2>Name: {data.name}</h2>
             <h2>Email: {data.email}</h2>
             <h2>Username: {data.username}</h2>
