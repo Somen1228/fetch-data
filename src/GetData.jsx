@@ -23,11 +23,7 @@ function GetData(props) {
 
     // call the fetch data function when the
     useEffect( () => {
-            try {
-                fetchData();
-            } catch(err){
-                setError(err);
-            }
+            fetchData();
     },[props.dataId])
     // page loads
 
