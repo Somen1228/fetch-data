@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
+import InputID from "./InputID.jsx";
 
-function GetData() {
+function GetData(props) {
     // using state management, manage
+    // console.log(props.dataId)
     const [data, setData] = useState({})
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -9,9 +11,12 @@ function GetData() {
 
     async function fetchData() {
         // complete the code here
-        const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${props.dataId}`);
+        if (!response.ok) {
+            setError("Error fetching data");
+        }
         const responseData = await response.json();
-        console.log(responseData)
+        // console.log(responseData)
         setLoading(false)
         setData(responseData)
     }
@@ -23,7 +28,7 @@ function GetData() {
             } catch(err){
                 setError(err);
             }
-        }, [])
+    },[props.dataId])
     // page loads
 
 

@@ -1,10 +1,11 @@
 import "./App.css";
 import GetData from "./GetData";
+import InputID from "./InputID";
 
 function App() {
     return (
         <div className="App">
-            <GetData />
+            <InputID />
         </div>
     );
 }
